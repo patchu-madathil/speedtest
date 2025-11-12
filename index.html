@@ -27,7 +27,815 @@
     </div>
 
     <script>
-      !function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports.ndt7=t():e.ndt7=t()}(this,(function(){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,{__esModule:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=0)}([function(e,t,n){"use strict";var r=this&&this.__awaiter||function(e,t,n,r){return new(n||(n=Promise))((function(o,i){function a(e){try{c(r.next(e))}catch(e){i(e)}}function s(e){try{c(r.throw(e))}catch(e){i(e)}}function c(e){e.done?o(e.value):new n((function(t){t(e.value)})).then(a,s)}c((r=r.apply(e,t||[])).next())}))},o=this&&this.__generator||function(e,t){var n,r,o,i,a={label:0,sent:function(){if(1&o[0])throw o[1];return o[1]},trys:[],ops:[]};return i={next:s(0),throw:s(1),return:s(2)},"function"==typeof Symbol&&(i[Symbol.iterator]=function(){return this}),i;function s(i){return function(s){return function(i){if(n)throw new TypeError("Generator is already executing.");for(;a;)try{if(n=1,r&&(o=2&i[0]?r.return:i[0]?r.throw||((o=r.return)&&o.call(r),0):r.next)&&!(o=o.call(r,i[1])).done)return o;switch(r=0,o&&(i=[2&i[0],o.value]),i[0]){case 0:case 1:o=i;break;case 4:a.label++,a.sent=a.ops[a.label]=i[1],a.ops.pop();break;case 5:a.label++,n=i[1],i=[0];break;case 7:a.ops.pop(),a.trys.pop();break;default:if(!(o=(o=a.trys).length>0&&o[o.length-1])&&(6===i[0]||2===i[0])){a=0;continue}if(3===i[0]&&(!o||i[1]>o[0]&&i[1]<o[3])){a.label=i[1];break}if(6===i[0]&&a.label<o[1]){a.label=o[1],o=i;break}if(o&&a.label<o[2]){a.label=o[2],a.ops.push(i);break}o[2]&&a.ops.pop(),a.trys.pop()}continue}i=t.call(e,i),a.ops.push(i)}catch(e){i=[6,e],n=0}finally{n=o=0}if(5&i[0])throw i[1];return{value:i[0]?i[1]:void 0,done:!0}}([i,s])}}};Object.defineProperty(t,"__esModule",{value:!0});var i={protocol:"wss",hostname:"locate.measurementlab.net",port:443,path:"/v2/nearest/ndt/ndt7"},a="ndt-v7",s=16777216,c={debug:void 0,error:void 0,warn:void 0},u=function(){function e(e){var t=this;this.config=Object.assign({metadata:{},userAcceptedDataPolicy:!1},e||{});var n=this.config.server||{};this.config.server=Object.assign({},i,n),["debug","error","warn"].forEach((function(e){c[e]=function(){for(var n,r=[],o=0;o<arguments.length;o++)r[o]=arguments[o];!1===(null===(n=t.config)||void 0===n?void 0:n.quiet)&&console[e].apply(console,r)}."function"==typeof(null==e?void 0:e[t.config.verbosity])&&(c[e]=t.config.verbosity[e])}))}return e.prototype.start=function(){var e,t,n,i,s;return r(this,void 0,void 0,(function(){var r,u,l,f,p,d,h,g,v,m,y;return o(this,(function(o){switch(o.label){case 0:return r={},u={},l={},[4,this.findServer()];case 1:return f=o.sent(),this.config.server=Object.assign({},this.config.server,f),[4,this.download()];case 2:return p=o.sent(),d=this.config.server,h=d.hostname,g=d.port,this.url=new URL(p),this.url.protocol="wss:",this.url.hostname=h||this.url.hostname,this.url.port=String(g||this.url.port),this.url.searchParams.set("client_name","ndt7-js"),this.url.searchParams.set("client_version",this.version()),Object.assign(r,null===(e=p.websocket)||void 0===e?void 0:e.summary,null===(t=p.tcpinfo)||void 0===t?void 0:t.summary),Object.assign(u,null===(n=p.websocket)||void 0===n?void 0:n.results,null===(i=p.tcpinfo)||void 0===i?void 0:i.results),Object.assign(l,null===p||void 0===p?void 0:p.latency),[4,this.upload()];case 3:return v=o.sent(),Object.assign(r,null===(m=v.websocket)||void 0===m?void 0:m.summary,null===(y=v.tcpinfo)||void 0===y?void 0:y.summary),Object.assign(u,v.results),this.summary={download:p.summary,upload:v.summary,latency:l,server:this.config.server,url:this.url,results:u,raw:r},c.debug("NDT7 summary",this.summary),this.summary.results.forEach((function(e){var t;null===(t=e.Origin)||(t.IsSender||(e.Data=void 0))})),[2,this.summary]}}))}))},e.prototype.findServer=function(e){return r(this,void 0,void 0,(function(){var t,n,r;return o(this,(function(o){switch(o.label){case 0:return c.debug("locating server: ".concat(JSON.stringify(this.config.server))),t="".concat(this.config.server.protocol,"//").concat(this.config.server.hostname,":").concat(this.config.server.port).concat(this.config.server.path),e&&(t+="?".concat(new URLSearchParams(e))),[4,fetch(t)];case 1:return n=o.sent(),[4,n.json()];case 2:return(r=o.sent()).results&&r.results.length?(c.debug("located server: ".concat(JSON.stringify(r.results[0]))),r.results[0]):(c.warn("could not locate server: ".concat(JSON.stringify(r))),this.config.server)}))}))},e.prototype.download=function(){return this.test("download","receive")},e.prototype.upload=function(){return this.test("upload","send")},e.prototype.version=function(){try{return n(1).version}catch(e){return"v0.0.0"}},e.prototype.test=function(e,t){var n=this;return r(this,void 0,void 0,(function(){var r,i,c;return o(this,(function(o){switch(o.label){case 0:if(r=Object.assign({},this.config.server),!r.paths){var u,l,f,p;try{r.paths={},r.paths.download=(null===(u=this.config.server)||void 0===u?void 0:u.urls["".concat(this.config.server.protocol.replace("http","ws"),"://").concat(this.config.server.machine,"/ndt/v7/download")]),r.paths.upload=(null===(l=this.config.server)||void 0===l?void 0:l.urls["".concat(this.config.server.protocol.replace("http","ws"),"://").concat(this.config.server.machine,"/ndt/v7/upload")])}catch(e){c.debug("no server.urls",e),r.paths.download=(null===(f=this.config.server.urls)||void 0===f?void 0:f["wss:///ndt/v7/download"]),r.paths.upload=(null===(p=this.config.server.urls)||void 0===p?void 0:p["wss:///ndt/v7/upload"])}}return this.url=this.parseUrl("".concat(r.protocol,"//").concat(r.hostname,":").concat(r.port).concat(r.paths[e])),[4,new Promise((function(o,i){var u;n.makeWebsocket(n.url.toString(),a).then((function(r){var a,l={},f={},p={},d={throughput:{unit:"Mbit/s"}},h=0,g=0,v=0,m=performance.now(),y=(null===(u=n.config.callbacks)||void 0===u?void 0:u.onresult)||function(){};r.onopen=function(t){m=performance.now(),c.debug("".concat(e,".onopen"),t),l[e]={start_time:m,count:0,bytes:0,last_bytes:0,last_time:m},f[e]=[],p[e]=[],n.config.callbacks&&n.config.callbacks.onstart&&n.config.callbacks.onstart({kind:e,time:m})},"download"===e?r.onmessage=function(t){h+=t.data.length,v+=1;var r=performance.now(),o=r-m;if(n.config.callbacks&&n.config.callbacks.onmeasurement)try{var i={kind:e,time:r,count:v,bytes:h,elapsed:o/1e3};"string"==typeof t.data?i.origin="text":(i.measurement=JSON.parse(t.data),i.origin="server",f[e].push(i),y(i)),n.config.callbacks.onmeasurement(i)}catch(e){c.warn("error in download.onmeasurement callback",e)}if(o>250){var a=h-g;d.throughput.value=8*a/o*1e3/1e6,n.config.callbacks&&n.config.callbacks.onprogress&&n.config.callbacks.onprogress({kind:e,time:r,count:v,bytes:h,elapsed:o/1e3,throughput:d.throughput}),g=h,m=r}}:(a=new Uint8Array(s),function o(){if(r.bufferedAmount>s)return void setTimeout(o,10);for(var i=performance.now();r.bufferedAmount<=s;){r.send(a),h+=a.length,v+=1;var u=i-m;if(n.config.callbacks&&n.config.callbacks.onmeasurement)try{var l={kind:e,time:i,count:v,bytes:h,elapsed:u/1e3};n.config.callbacks.onmeasurement(l)}catch(e){c.warn("error in upload.onmeasurement callback",e)}if(u>250){var f=h-g;d.throughput.value=8*f/u*1e3/1e6,n.config.callbacks&&n.config.callbacks.onprogress&&n.config.callbacks.onprogress({kind:e,time:i,count:v,bytes:h,elapsed:u/1e3,throughput:d.throughput}),g=h,m=i;break}}setTimeout(o,0)}()),r.onclose=function(t){c.debug("".concat(e,".onclose"),t);var a=performance.now(),s=a-l[e].start_time;l[e].end_time=a,l[e].elapsed=s,l[e].throughput=8*h/s*1e3/1e6,r.latency&&Object.assign(p,r.latency),n.config.callbacks&&n.config.callbacks.oncomplete&&n.config.callbacks.oncomplete({kind:e,time:a,count:v,bytes:h,elapsed:s/1e3,throughput:{value:l[e].throughput,unit:"Mbit/s"}}),o({summary:l,results:f,latency:p,tcpinfo:r.tcpInfo,websocket:r.websocketInfo})},r.onerror=function(t){c.warn("".concat(e,".onerror"),t),i(new Error("".concat(e," test failed: ").concat(t.type)))}})).catch((function(e){c.error(e),i(e)})))}];case 1:return i=o.sent(),(c=i.tcpinfo)&&(i.tcpinfo.summary=n.parseSummary(c,"tcpinfo")),(c=i.websocket)&&(i.websocket.summary=n.parseSummary(c,"websocket")),[2,i]}}))}))},e.prototype.parseUrl=function(e){var t=new URL(e);return t.searchParams.set("client_name","ndt7-js"),t.searchParams.set("client_version",this.version()),t.searchParams.set("client_library_name","ndt7-js"),t.searchParams.set("client_library_version",this.version()),this.config.metadata&&Object.entries(this.config.metadata).forEach((function(e){var n=e[0],r=e[1];t.searchParams.set(n,r)})),this.config.userAcceptedDataPolicy||t.searchParams.set("meta_key_required","true"),c.debug("url: ".concat(t)),t},e.prototype.makeWebsocket=function(e,t){return r(this,void 0,void 0,(function(){var n,r,i,s,u,l,f,p,d,h,g,v,m,y;return o(this,(function(o){switch(o.label){case 0:n=new WebSocket(e,t),r={results:[]},i={results:[]},o.label=1;case 1:return n.readyState,s=n.readyState,u=performance.now(),l=r.results.length>0?r.results.slice(-1)[0]:{},[4,this.getWebsocketInfo(n,s,u,l)];case 2:if(f=o.sent(),f&&r.results.push(f),p=f.TCPInfo,d=i.results.length>0?i.results.slice(-1)[0]:{},!p)return[3,4];if(p.State>10)return[3,6];h=u,g=p.BytesReceived,v=p.BytesSent,m=p.SegsOut,y=p.SegsIn,o.label=3;case 3:g===p.BytesReceived&&v===p.BytesSent&&m===p.SegsOut&&y===p.SegsIn&&u-h<3e3||(p.AppInfo={Timestamp:u},i.results.push(p),h=u,g=p.BytesReceived,v=p.BytesSent,m=p.SegsOut,y=p.SegsIn),o.label=4;case 4:return 0===n.readyState?[3,5]:1===n.readyState?[3,5]:[3,6];case 5:return[4,new Promise((function(e){return setTimeout(e,100)}))];case 6:return 3===n.readyState?[3,8]:[3,1];case 7:return[3,8];case 8:return n.tcpInfo=i,n.websocketInfo=r,c.debug("makeWebsocket return",n),[2,n]}}))}))},e.prototype.getWebsocketInfo=function(e,t,n,r){return r&&r.Timestamp===n?null:{Timestamp:n,State:t,Buffer:e.bufferedAmount}},e.prototype.parseSummary=function(e,t){if(!e||!e.results||e.results.length<=0)return c.warn("empty results",e),{};c.debug("".concat(t,".summary"),e);var n=e.results[0],r=e.results.slice(-1)[0],o={first:n,last:r,start_time:n.Timestamp,end_time:r.Timestamp,elapsed:(r.Timestamp-n.Timestamp)/1e3};if("tcpinfo"===t)o.bytes_received=r.BytesReceived-n.BytesReceived,o.bytes_sent=r.BytesSent-n.BytesSent;else{if("websocket"!==t)return o;o.bytes=r.Buffer-n.Buffer}return o},e}();t.Client=u,t.default=u}]).default}));
+      !(function (e, t) {
+        "object" == typeof exports && "object" == typeof module
+          ? (module.exports = t())
+          : "function" == typeof define && define.amd
+          ? define([], t)
+          : "object" == typeof exports
+          ? (exports.ndt7 = t())
+          : (e.ndt7 = t());
+      })(this, function () {
+        return (function (e) {
+          var t = {};
+          function n(r) {
+            if (t[r]) return t[r].exports;
+            var o = (t[r] = { i: r, l: !1, exports: {} });
+            return e[r].call(o.exports, o, o.exports, n), (o.l = !0), o.exports;
+          }
+          return (
+            (n.m = e),
+            (n.c = t),
+            (n.d = function (e, t, r) {
+              n.o(e, t) ||
+                Object.defineProperty(e, t, { enumerable: !0, get: r });
+            }),
+            (n.r = function (e) {
+              "undefined" != typeof Symbol &&
+                Symbol.toStringTag &&
+                Object.defineProperty(e, Symbol.toStringTag, { value: "Module" }),
+                Object.defineProperty(e, "__esModule", { value: !0 });
+            }),
+            (n.t = function (e, t) {
+              if ((1 & t && (e = n(e)), 8 & t)) return e;
+              if (4 & t && "object" == typeof e && e && e.__esModule) return e;
+              var r = Object.create(null);
+              if (
+                (n.r(r),
+                Object.defineProperty(r, "default", { enumerable: !0, value: e }),
+                2 & t && "string" != typeof e)
+              )
+                for (var o in e)
+                  n.d(
+                    r,
+                    o,
+                    function (t) {
+                      return e[t];
+                    }.bind(null, o)
+                  );
+              return r;
+            }),
+            (n.n = function (e) {
+              var t =
+                e && e.__esModule
+                  ? function () {
+                      return e.default;
+                    }
+                  : function () {
+                      return e;
+                    };
+              return n.d(t, "a", t), t;
+            }),
+            (n.o = function (e, t) {
+              return Object.prototype.hasOwnProperty.call(e, t);
+            }),
+            (n.p = ""),
+            n((n.s = 0))
+          );
+        })([
+          function (e, t, n) {
+            "use strict";
+            var r =
+                (this && this.__awaiter) ||
+                function (e, t, n, r) {
+                  return new (n || (n = Promise))(function (o, i) {
+                    function a(e) {
+                      try {
+                        c(r.next(e));
+                      } catch (e) {
+                        i(e);
+                      }
+                    }
+                    function s(e) {
+                      try {
+                        c(r.throw(e));
+                      } catch (e) {
+                        i(e);
+                      }
+                    }
+                    function c(e) {
+                      e.done
+                        ? o(e.value)
+                        : new n(function (t) {
+                            t(e.value);
+                          }).then(a, s);
+                    }
+                    c((r = r.apply(e, t || [])).next());
+                  });
+                },
+              o =
+                (this && this.__generator) ||
+                function (e, t) {
+                  var n,
+                    r,
+                    o,
+                    i,
+                    a = {
+                      label: 0,
+                      sent: function () {
+                        if (1 & o[0]) throw o[1];
+                        return o[1];
+                      },
+                      trys: [],
+                      ops: [],
+                    };
+                  return (
+                    (i = { next: s(0), throw: s(1), return: s(2) }),
+                    "function" == typeof Symbol &&
+                      (i[Symbol.iterator] = function () {
+                        return this;
+                      }),
+                    i
+                  );
+                  function s(i) {
+                    return function (s) {
+                      return (function (i) {
+                        if (n)
+                          throw new TypeError("Generator is already executing.");
+                        for (; a; )
+                          try {
+                            if (
+                              ((n = 1),
+                              r &&
+                                (o =
+                                  2 & i[0]
+                                    ? r.return
+                                    : i[0]
+                                    ? r.throw || ((o = r.return) && o.call(r), 0)
+                                    : r.next) &&
+                                !(o = o.call(r, i[1])).done)
+                            )
+                              return o;
+                            switch (
+                              ((r = 0), o && (i = [2 & i[0], o.value]), i[0])
+                            ) {
+                              case 0:
+                              case 1:
+                                o = i;
+                                break;
+                              case 4:
+                                return (
+                                  a.label++,
+                                  { value: i[1], done: !1 }
+                                );
+                              case 5:
+                                a.label++, (n = i[1]), (i = [0]);
+                                continue;
+                              case 7:
+                                (a.ops = a.ops.pop()), a.trys.pop();
+                                continue;
+                              default:
+                                if (
+                                  !(
+                                    (o = (o = a.trys).length > 0 && o[o.length - 1]) ||
+                                    (6 !== i[0] && 2 !== i[0])
+                                  )
+                                ) {
+                                  a = 0;
+                                  continue;
+                                }
+                                if (
+                                  3 === i[0] &&
+                                  (!o || (i[1] > o[0] && i[1] < o[3]))
+                                ) {
+                                  a.label = i[1];
+                                  break;
+                                }
+                                if (6 === i[0] && a.label < o[1]) {
+                                  (a.label = o[1]), (o = i);
+                                  break;
+                                }
+                                if (o && a.label < o[2]) {
+                                  (a.label = o[2]), a.ops.push(i);
+                                  break;
+                                }
+                                o[2] && a.ops.pop(), a.trys.pop();
+                            }
+                          } catch (e) {
+                            (i = [6, e]), (n = 0);
+                          } finally {
+                            n = o = 0;
+                          }
+                        if (5 & i[0]) throw i[1];
+                        return { value: i[0] ? i[1] : void 0, done: !0 };
+                      })([i, s]);
+                    };
+                  }
+                };
+            Object.defineProperty(t, "__esModule", { value: !0 });
+            var i = {
+                protocol: "wss",
+                hostname: "locate.measurementlab.net",
+                port: 443,
+                path: "/v2/nearest/ndt/ndt7",
+              },
+              a = "ndt-v7",
+              s = 16777216,
+              c = { debug: void 0, error: void 0, warn: void 0 },
+              u = (function () {
+                function e(e) {
+                  var t = this;
+                  (this.config = Object.assign(
+                    { metadata: {}, userAcceptedDataPolicy: !1 },
+                    e || {}
+                  ));
+                  var n = this.config.server || {};
+                  (this.config.server = Object.assign({}, i, n)),
+                    ["debug", "error", "warn"].forEach(function (e) {
+                      var n;
+                      (c[e] = function () {
+                        for (var n, r = [], o = 0; o < arguments.length; o++)
+                          r[o] = arguments[o];
+                        !1 ===
+                          (null === (n = t.config) || void 0 === n
+                            ? void 0
+                            : n.quiet) && console[e].apply(console, r);
+                      }),
+                        "function" ==
+                          typeof (null == e ? void 0 : e[t.config.verbosity]) &&
+                          (c[e] = t.config.verbosity[e]);
+                    });
+                }
+                return (
+                  (e.prototype.start = function () {
+                    var e, t, n, i, s;
+                    return r(this, void 0, void 0, function () {
+                      var r, u, l, f, p, d, h, g, v, m, y;
+                      return o(this, function (o) {
+                        switch (o.label) {
+                          case 0:
+                            return (
+                              (r = {}),
+                              (u = {}),
+                              (l = {}),
+                              [4, this.findServer()]
+                            );
+                          case 1:
+                            return (
+                              (f = o.sent()),
+                              (this.config.server = Object.assign(
+                                {},
+                                this.config.server,
+                                f
+                              )),
+                              [4, this.download()]
+                            );
+                          case 2:
+                            return (
+                              (p = o.sent()),
+                              (d = this.config.server),
+                              (h = d.hostname),
+                              (g = d.port),
+                              (this.url = new URL(p)),
+                              (this.url.protocol = "wss:"),
+                              (this.url.hostname = h || this.url.hostname),
+                              (this.url.port = String(g || this.url.port)),
+                              this.url.searchParams.set(
+                                "client_name",
+                                "ndt7-js"
+                              ),
+                              this.url.searchParams.set(
+                                "client_version",
+                                this.version()
+                              ),
+                              Object.assign(
+                                r,
+                                null === (e = p.websocket) || void 0 === e
+                                  ? void 0
+                                  : e.summary,
+                                null === (t = p.tcpinfo) || void 0 === t
+                                  ? void 0
+                                  : t.summary
+                              ),
+                              Object.assign(
+                                u,
+                                null === (n = p.websocket) || void 0 === n
+                                  ? void 0
+                                  : n.results,
+                                null === (i = p.tcpinfo) || void 0 === i
+                                  ? void 0
+                                  : i.results
+                              ),
+                              Object.assign(
+                                l,
+                                null === p || void 0 === p ? void 0 : p.latency
+                              ),
+                              [4, this.upload()]
+                            );
+                          case 3:
+                            return (
+                              (v = o.sent()),
+                              Object.assign(
+                                r,
+                                null === (m = v.websocket) || void 0 === m
+                                  ? void 0
+                                  : m.summary,
+                                null === (y = v.tcpinfo) || void 0 === y
+                                  ? void 0
+                                  : y.summary
+                              ),
+                              Object.assign(u, v.results),
+                              (this.summary = {
+                                download: p.summary,
+                                upload: v.summary,
+                                latency: l,
+                                server: this.config.server,
+                                url: this.url,
+                                results: u,
+                                raw: r,
+                              }),
+                              c.debug("NDT7 summary", this.summary),
+                              this.summary.results.forEach(function (e) {
+                                var t;
+                                (null === (t = e.Origin) || t.IsSender) &&
+                                  (e.Data = void 0);
+                              }),
+                              [2, this.summary]
+                            );
+                        }
+                      });
+                    });
+                  }),
+                  (e.prototype.findServer = function (e) {
+                    return r(this, void 0, void 0, function () {
+                      var t, n, r;
+                      return o(this, function (o) {
+                        switch (o.label) {
+                          case 0:
+                            return (
+                              c.debug(
+                                "locating server: ".concat(
+                                  JSON.stringify(this.config.server)
+                                )
+                              ),
+                              (t = ""
+                                .concat(this.config.server.protocol, "//")
+                                .concat(this.config.server.hostname, ":")
+                                .concat(this.config.server.port)
+                                .concat(this.config.server.path)),
+                              e &&
+                                (t += "?".concat(
+                                  new URLSearchParams(e)
+                                )),
+                              [4, fetch(t)]
+                            );
+                          case 1:
+                            return (n = o.sent()), [4, n.json()];
+                          case 2:
+                            return (r = o.sent()).results && r.results.length
+                              ? (c.debug(
+                                  "located server: ".concat(
+                                    JSON.stringify(r.results[0])
+                                  )
+                                ),
+                                r.results[0])
+                              : (c.warn(
+                                  "could not locate server: ".concat(
+                                    JSON.stringify(r)
+                                  )
+                                ),
+                                this.config.server);
+                        }
+                      });
+                    });
+                  }),
+                  (e.prototype.download = function () {
+                    return this.test("download", "receive");
+                  }),
+                  (e.prototype.upload = function () {
+                    return this.test("upload", "send");
+                  }),
+                  (e.prototype.version = function () {
+                    try {
+                      return n(1).version;
+                    } catch (e) {
+                      return "v0.0.0";
+                    }
+                  }),
+                  (e.prototype.test = function (e, t) {
+                    var n = this;
+                    return r(this, void 0, void 0, function () {
+                      var r, i, c;
+                      return o(this, function (o) {
+                        switch (o.label) {
+                          case 0:
+                            if (
+                              ((r = Object.assign({}, this.config.server)),
+                              !r.paths)
+                            ) {
+                              var u, l, f, p;
+                              try {
+                                (r.paths = {}),
+                                  (r.paths.download =
+                                    null === (u = this.config.server) ||
+                                    void 0 === u
+                                      ? void 0
+                                      : u.urls[
+                                          ""
+                                            .concat(
+                                              this.config.server.protocol.replace(
+                                                "http",
+                                                "ws"
+                                              ),
+                                              "://"
+                                            )
+                                            .concat(
+                                              this.config.server.machine,
+                                              "/ndt/v7/download"
+                                            )
+                                        ]),
+                                  (r.paths.upload =
+                                    null === (l = this.config.server) ||
+                                    void 0 === l
+                                      ? void 0
+                                      : l.urls[
+                                          ""
+                                            .concat(
+                                              this.config.server.protocol.replace(
+                                                "http",
+                                                "ws"
+                                              ),
+                                              "://"
+                                            )
+                                            .concat(
+                                              this.config.server.machine,
+                                              "/ndt/v7/upload"
+                                            )
+                                        ]);
+                              } catch (e) {
+                                c.debug("no server.urls", e),
+                                  (r.paths.download =
+                                    null === (f = this.config.server.urls) ||
+                                    void 0 === f
+                                      ? void 0
+                                      : f["wss:///ndt/v7/download"]),
+                                  (r.paths.upload =
+                                    null === (p = this.config.server.urls) ||
+                                    void 0 === p
+                                      ? void 0
+                                      : p["wss:///ndt/v7/upload"]);
+                              }
+                            }
+                            return (
+                              (this.url = this.parseUrl(
+                                ""
+                                  .concat(r.protocol, "//")
+                                  .concat(r.hostname, ":")
+                                  .concat(r.port)
+                                  .concat(r.paths[e])
+                              )),
+                              [
+                                4,
+                                new Promise(function (o, i) {
+                                  var u;
+                                  n.makeWebsocket(n.url.toString(), a)
+                                    .then(function (r) {
+                                      var a,
+                                        l = {},
+                                        f = {},
+                                        p = {},
+                                        d = { throughput: { unit: "Mbit/s" } },
+                                        h = 0,
+                                        g = 0,
+                                        v = 0,
+                                        m = performance.now(),
+                                        y =
+                                          (null === (u = n.config.callbacks) ||
+                                          void 0 === u
+                                            ? void 0
+                                            : u.onresult) || function () {};
+                                      (r.onopen = function (t) {
+                                        (m = performance.now()),
+                                          c.debug("".concat(e, ".onopen"), t),
+                                          (l[e] = {
+                                            start_time: m,
+                                            count: 0,
+                                            bytes: 0,
+                                            last_bytes: 0,
+                                            last_time: m,
+                                          }),
+                                          (f[e] = []),
+                                          (p[e] = []),
+                                          n.config.callbacks &&
+                                            n.config.callbacks.onstart &&
+                                            n.config.callbacks.onstart({
+                                              kind: e,
+                                              time: m,
+                                            });
+                                      }),
+                                        "download" === e
+                                          ? (r.onmessage = function (t) {
+                                              (h += t.data.length), (v += 1);
+                                              var r = performance.now(),
+                                                o = r - m;
+                                              if (
+                                                n.config.callbacks &&
+                                                n.config.callbacks.onmeasurement
+                                              )
+                                                try {
+                                                  var i = {
+                                                    kind: e,
+                                                    time: r,
+                                                    count: v,
+                                                    bytes: h,
+                                                    elapsed: o / 1e3,
+                                                  };
+                                                  "string" == typeof t.data
+                                                    ? (i.origin = "text")
+                                                    : ((i.measurement =
+                                                        JSON.parse(t.data)),
+                                                      (i.origin = "server"),
+                                                      f[e].push(i),
+                                                      y(i)),
+                                                    n.config.callbacks.onmeasurement(
+                                                      i
+                                                    );
+                                                } catch (e) {
+                                                  c.warn(
+                                                    "error in download.onmeasurement callback",
+                                                    e
+                                                  );
+                                                }
+                                              if (o > 250) {
+                                                var a = h - g;
+                                                (d.throughput.value =
+                                                  ((8 * a) / o) * 1e3 * 1e-6),
+                                                  n.config.callbacks &&
+                                                    n.config.callbacks.onprogress &&
+                                                    n.config.callbacks.onprogress(
+                                                      {
+                                                        kind: e,
+                                                        time: r,
+                                                        count: v,
+                                                        bytes: h,
+                                                        elapsed: o / 1e3,
+                                                        throughput: d.throughput,
+                                                      }
+                                                    ),
+                                                  (g = h),
+                                                  (m = r);
+                                              }
+                                            })
+                                          : ((a = new Uint8Array(s)),
+                                            (function o() {
+                                              if (r.bufferedAmount > s)
+                                                return void setTimeout(o, 10);
+                                              for (
+                                                var i = performance.now();
+                                                r.bufferedAmount <= s;
+  
+                                              ) {
+                                                r.send(a), (h += a.length), (v += 1);
+                                                var u = i - m;
+                                                if (
+                                                  n.config.callbacks &&
+                                                  n.config.callbacks.onmeasurement
+                                                )
+                                                  try {
+                                                    var l = {
+                                                      kind: e,
+                                                      time: i,
+                                                      count: v,
+                                                      bytes: h,
+                                                      elapsed: u / 1e3,
+                                                    };
+                                                    n.config.callbacks.onmeasurement(
+                                                      l
+                                                    );
+                                                  } catch (e) {
+                                                    c.warn(
+                                                      "error in upload.onmeasurement callback",
+                                                      e
+                                                    );
+                                                  }
+                                                if (u > 250) {
+                                                  var f = h - g;
+                                                  (d.throughput.value =
+                                                    ((8 * f) / u) * 1e3 * 1e-6),
+                                                    n.config.callbacks &&
+                                                      n.config.callbacks
+                                                        .onprogress &&
+                                                      n.config.callbacks.onprogress(
+                                                        {
+                                                          kind: e,
+                                                          time: i,
+                                                          count: v,
+                                                          bytes: h,
+                                                          elapsed: u / 1e3,
+                                                          throughput:
+                                                            d.throughput,
+                                                        }
+                                                      ),
+                                                    (g = h),
+                                                    (m = i);
+                                                  break;
+                                                }
+                                              }
+                                              setTimeout(o, 0);
+                                            })()),
+                                        (r.onclose = function (t) {
+                                          c.debug("".concat(e, ".onclose"), t);
+                                          var a = performance.now(),
+                                            s = a - l[e].start_time;
+                                          (l[e].end_time = a),
+                                            (l[e].elapsed = s),
+                                            (l[e].throughput =
+                                              ((8 * h) / s) * 1e3 * 1e-6),
+                                            r.latency && Object.assign(p, r.latency),
+                                            n.config.callbacks &&
+                                              n.config.callbacks.oncomplete &&
+                                              n.config.callbacks.oncomplete({
+                                                kind: e,
+                                                time: a,
+                                                count: v,
+                                                bytes: h,
+                                                elapsed: s / 1e3,
+                                                throughput: {
+                                                  value: l[e].throughput,
+                                                  unit: "Mbit/s",
+                                                },
+                                              }),
+                                            o({
+                                              summary: l,
+                                              results: f,
+                                              latency: p,
+                                              tcpinfo: r.tcpInfo,
+                                              websocket: r.websocketInfo,
+                                            });
+                                        }),
+                                        (r.onerror = function (t) {
+                                          c.warn("".concat(e, ".onerror"), t),
+                                            i(
+                                              new Error(
+                                                ""
+                                                  .concat(e, " test failed: ")
+                                                  .concat(t.type)
+                                              )
+                                            );
+                                        });
+                                    })
+                                    .catch(function (e) {
+                                      c.error(e), i(e);
+                                    });
+                                }),
+                              ]
+                            );
+                          case 1:
+                            return (
+                              (i = o.sent()),
+                              (c = i.tcpinfo) &&
+                                (i.tcpinfo.summary = n.parseSummary(
+                                  c,
+                                  "tcpinfo"
+                                )),
+                              (c = i.websocket) &&
+                                (i.websocket.summary = n.parseSummary(
+                                  c,
+                                  "websocket"
+                                )),
+                              [2, i]
+                            );
+                        }
+                      });
+                    });
+                  }),
+                  (e.prototype.parseUrl = function (e) {
+                    var t = new URL(e);
+                    return (
+                      t.searchParams.set("client_name", "ndt7-js"),
+                      t.searchParams.set("client_version", this.version()),
+                      t.searchParams.set("client_library_name", "ndt7-js"),
+                      t.searchParams.set("client_library_version", this.version()),
+                      this.config.metadata &&
+                        Object.entries(this.config.metadata).forEach(function (
+                          e
+                        ) {
+                          var n = e[0],
+                            r = e[1];
+                          t.searchParams.set(n, r);
+                        }),
+                      this.config.userAcceptedDataPolicy ||
+                        t.searchParams.set("meta_key_required", "true"),
+                      c.debug("url: ".concat(t)),
+                      t
+                    );
+                  }),
+                  (e.prototype.makeWebsocket = function (e, t) {
+                    return r(this, void 0, void 0, function () {
+                      var n, r, i, s, u, l, f, p, d, h, g, v, m, y;
+                      return o(this, function (o) {
+                        switch (o.label) {
+                          case 0:
+                            (n = new WebSocket(e, t)),
+                              (r = { results: [] }),
+                              (i = { results: [] }),
+                              (o.label = 1);
+                          case 1:
+                            return (
+                              n.readyState,
+                              (s = n.readyState),
+                              (u = performance.now()),
+                              (l =
+                                r.results.length > 0
+                                  ? r.results.slice(-1)[0]
+                                  : {}),
+                              [4, this.getWebsocketInfo(n, s, u, l)]
+                            );
+                          case 2:
+                            if (
+                              ((f = o.sent()),
+                              f && r.results.push(f),
+                              (p = f.TCPInfo),
+                              (d =
+                                i.results.length > 0
+                                  ? i.results.slice(-1)[0]
+                                  : {}),
+                              !p)
+                            )
+                              return [3, 4];
+                            if (p.State > 10) return [3, 6];
+                            (h = u),
+                              (g = p.BytesReceived),
+                              (v = p.BytesSent),
+                              (m = p.SegsOut),
+                              (y = p.SegsIn),
+                              (o.label = 3);
+                          case 3:
+                            (g === p.BytesReceived &&
+                              v === p.BytesSent &&
+                              m === p.SegsOut &&
+                              y === p.SegsIn &&
+                              u - h < 3e3) ||
+                              ((p.AppInfo = { Timestamp: u }),
+                              i.results.push(p),
+                              (h = u),
+                              (g = p.BytesReceived),
+                              (v = p.BytesSent),
+                              (m = p.SegsOut),
+                              (y = p.SegsIn)),
+                              (o.label = 4);
+                          case 4:
+                            return 0 === n.readyState
+                              ? [3, 5]
+                              : 1 === n.readyState
+                              ? [3, 5]
+                              : [3, 6];
+                          case 5:
+                            return [
+                              4,
+                              new Promise(function (e) {
+                                return setTimeout(e, 100);
+                              }),
+                            ];
+                          case 6:
+                            return 3 === n.readyState ? [3, 8] : [3, 1];
+                          case 7:
+                            return [3, 8];
+                          case 8:
+                            return (
+                              (n.tcpInfo = i),
+                              (n.websocketInfo = r),
+                              c.debug("makeWebsocket return", n),
+                              [2, n]
+                            );
+                        }
+                      });
+                    });
+                  }),
+                  (e.prototype.getWebsocketInfo = function (e, t, n, r) {
+                    return r && r.Timestamp === n
+                      ? null
+                      : { Timestamp: n, State: t, Buffer: e.bufferedAmount };
+                  }),
+                  (e.prototype.parseSummary = function (e, t) {
+                    if (!e || !e.results || e.results.length <= 0)
+                      return c.warn("empty results", e), {};
+                    c.debug("".concat(t, ".summary"), e);
+                    var n = e.results[0],
+                      r = e.results.slice(-1)[0],
+                      o = {
+                        first: n,
+                        last: r,
+                        start_time: n.Timestamp,
+                        end_time: r.Timestamp,
+                        elapsed: (r.Timestamp - n.Timestamp) / 1e3,
+                      };
+                    if ("tcpinfo" === t)
+                      (o.bytes_received = r.BytesReceived - n.BytesReceived),
+                        (o.bytes_sent = r.BytesSent - n.BytesSent);
+                    else {
+                      if ("websocket" !== t) return o;
+                      o.bytes = r.Buffer - n.Buffer;
+                    }
+                    return o;
+                  }),
+                  e
+                );
+              })();
+            (t.Client = u), (t.default = u);
+          },
+        ]);
+      });
     </script>
     
     <script>
