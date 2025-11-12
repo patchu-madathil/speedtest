@@ -102,7 +102,7 @@
         document.addEventListener('DOMContentLoaded', () => {
              // Check if libraries were inlined correctly
             if (typeof ndt7 === 'undefined') {
-                alert("CRITICAL ERROR: The ndt7 script is missing from the HTML file.");
+                alert("CRITICAL ERROR: The ndt7 script did not load. This is likely a copy-paste error. Please ensure the full inlined script is in the HTML file.");
                 const btn = document.getElementById('start-speed-test');
                 btn.disabled = true;
                 btn.textContent = "Speed Test (Error)";
